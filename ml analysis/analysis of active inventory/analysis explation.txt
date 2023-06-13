@@ -1,0 +1,16 @@
+This Product Analysis is a commonly used practice for inventory grouping that divides inventory into categories based on two factors, the cost per unit and the quantity held in stock. ABC Analysis divides the inventory into three major groups, which allows different inventory management techniques to be applied to different segments of the inventory in order to increase the revenue and decrease the cost.
+
+Each category A, B, and C consists of part of the total quantity of the items and represents a part of the total value of the items in the warehouse.
+
+Category A items generally represent approximately 15%-20% of an overall inventory by item, but represent 80% of value of an inventory. Items in this category are goods which annual consumption value is the highest.
+
+Category B items represent 30%-35% of inventory items by item type, and about 15% of the value. The items in this category are goods with medium consumption value.
+
+Category C items represent 50% of actual items but only 5% of the inventory value. The items in this category are goods with the lowest consumption value.
+
+ABC Analysis Steps
+Step 1: Calculate the annual spend for all the parts by multiplying the unit cost with the annual unit demand
+Step 2: Sort inventory in decreasing order of annual spend
+Step 3: Calculate the cumulative annual spend and the percent spend
+Step 4: Divide the inventory into classes
+Step 5: Analyze the classes and make appropriate decisions
