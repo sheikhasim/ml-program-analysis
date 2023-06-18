@@ -5,7 +5,7 @@ CMD echo "After Sales Inventory - ML Analysis"
 FROM python:3.9
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /ml Analysis
 
 # Copy the requirements file to the container
 COPY requirements.txt .
