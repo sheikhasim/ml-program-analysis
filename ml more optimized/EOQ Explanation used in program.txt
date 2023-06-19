@@ -1,0 +1,81 @@
+EOQ (Economic Order Quantity) is a calculation used in inventory management to determine the optimal order quantity that minimizes 
+the total cost of inventory. Here are the complete details of the EOQ calculation in the provided code:
+
+The demand per week for each product is calculated by summing the quantities sold for each product in each week:
+
+demand_per_week = weekly_sales.groupby(['Product Name', 'Week'])['Quantity'].sum().reset_index()
+demand_per_week = demand_per_week.rename(columns={'Quantity': 'Demand'})
+
+
+The EOQ is then calculated for each row in the demand_per_week DataFrame using the EOQ formula:
+
+demand_per_week['EOQ'] = demand_per_week.apply(lambda row: round(math.sqrt((2 * 500 * row['Demand']) / 100), 2), axis=1)
+
+
+In this calculation:
+
+500 represents the carrying cost per unit per year. It assumes that the cost of carrying one unit of inventory for a year is $500.
+100 represents the ordering cost per order. It assumes that the cost of placing an order is $100.
+The formula calculates the square root of ((2 * 500 * demand) / 100) to determine the optimal order quantity.
+The result is rounded to 2 decimal places and stored in the 'EOQ' column of the demand_per_week DataFrame.
+
+The demand_per_week DataFrame, including the 'Demand' and 'EOQ' columns, is exported to an Excel file named 'inventory_analysis_{current_date}.xlsx'
+
+demand_per_week.to_excel(excel_writer, sheet_name='Demand and EOQ', index=False)
+
+This Excel file will contain the demand and EOQ information for each product and week.
+
+Overall, the EOQ calculation is based on the assumption of a fixed carrying cost and ordering cost per unit and aims to find the order quantity that minimizes the total inventory cost. 
+The code provided calculates the EOQ for each product and stores the results in the Excel file for further analysis and inventory management.
+
+
+
+
+
+****************************************************************************************************************
+another example of calculating EOQ using a different set of values:
+
+Let's assume the following parameters:
+
+Annual demand: 1,200 units
+Cost per order: $50
+Carrying cost per unit per year: $2
+To calculate the EOQ, we can use the formula:
+
+EOQ = sqrt((2 * Annual Demand * Cost per Order) / Carrying cost per unit per year)
+
+Substituting the values into the formula:
+
+EOQ = sqrt((2 * 1200 * 50) / 2) = sqrt(120000) ≈ 346.41
+
+Therefore, the EOQ for this example is approximately 346 units.
+
+The EOQ represents the order quantity that balances the cost of ordering (placing an order) and the cost of carrying inventory (holding inventory in stock).
+ By ordering the EOQ quantity, a company aims to minimize the total inventory costs, considering both the ordering cost and carrying cost.
+
+It's important to note that the EOQ model assumes certain assumptions, such as constant demand, fixed costs, and instant replenishment.
+ These assumptions may not hold true in all scenarios, so it's essential to consider the specific context and adjust the model accordingly for accurate inventory management.
+
+
+
+
+
+*******************************************************************************************
+Carrying cost per unit per year refers to the cost associated with holding or carrying one unit of inventory for a specific period, typically one year.
+ It represents the expenses incurred by a company to store, maintain, and manage its inventory over a given timeframe.
+
+Carrying costs can include various factors, such as:
+
+Storage costs: The expenses related to renting or owning warehouse space to store the inventory. This can include rent, utilities, insurance, security, and maintenance costs.
+
+Holding costs: The costs associated with managing and handling inventory, including labor, equipment, and supplies required to store and handle the products.
+
+Opportunity cost of capital: The cost of tying up capital in inventory instead of investing it elsewhere. 
+This is the potential return on investment that could have been earned if the funds were allocated to other business activities.
+
+Obsolescence and deterioration costs: The expenses incurred when inventory becomes obsolete, expires, or loses value over time due to factors such as technological advancements, product lifecycle, or perishability.
+
+Risk of loss or damage: The cost associated with the risk of inventory being lost, damaged, stolen, or becoming unsellable, which may require additional expenses for replacements or repairs.
+
+The carrying cost per unit per year is usually expressed as a percentage of the unit cost or as a fixed dollar amount. 
+It helps businesses determine the financial impact of holding inventory and aids in optimizing inventory levels by balancing the costs of holding inventory with the benefits of having sufficient stock to meet customer demand.
